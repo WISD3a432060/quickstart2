@@ -36,4 +36,18 @@ Route::delete('/task/{task}', 'TaskController@destroy');
  
      return redirect('/tasks');
  }
+  /**
+  * 移除給定的任務。
+  *
+  * @param  Request  $request
+  * @param  Task  $task
+  * @return Response
+  */
+ public function destroy(Request $request, Task $task)
+ {
+     //
+ }
+
+
+
  
