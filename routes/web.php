@@ -45,7 +45,9 @@ Route::delete('/task/{task}', 'TaskController@destroy');
   */
  public function destroy(Request $request, Task $task)
  {
-     //
+    $this->authorize('destroy', $task);
+    
+        // 刪除該任務...    
  }
 
 
