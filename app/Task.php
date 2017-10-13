@@ -12,4 +12,10 @@ class Task extends Model
      * @var array
      */
     protected $fillable = ['name'];
+    $user = App\User::find(1);
+    
+    foreach ($user->tasks as $task) {
+        echo $task->name;
+    }
+    
 }
