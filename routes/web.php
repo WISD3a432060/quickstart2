@@ -18,3 +18,22 @@ Route::get('/', function () {
 Route::get('/tasks', 'TaskController@index');
 Route::post('/task', 'TaskController@store');
 Route::delete('/task/{task}', 'TaskController@destroy');
+/**
+ * 建立新的任務。
+ *
+ * @param  Request  $request
+ * @return Response
+ */
+ public function store(Request $request)
+ {
+     $this->validate($request, [
+         'name' => 'required|max:255',
+     ]);
+ 
+     $request->user()->tasks()->create([
+         'name' => $request->name,
+     ]);
+ 
+     return redirect('/tasks');
+ }
+ 
