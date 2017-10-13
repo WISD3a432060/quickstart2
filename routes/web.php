@@ -10,7 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+// 認證路由...
+Route::auth();
 Route::get('/', function () {
     return view('welcome');
 });
+
