@@ -19,14 +19,6 @@ class TaskController extends Controller
  * @param  Request  $request
  * @return Response
  */
-public function store(Request $request)
-{
-    $this->validate($request, [
-        'name' => 'required|max:255',
-    ]);
-
-    // Create The Task...
-}
     /**
      * 建立新的控制器實例。
      *
@@ -66,5 +58,39 @@ public function __construct(TaskRepository $tasks)
          'tasks' => $tasks,
      ]);
  }
- 
+ /**
+ * 建立新的任務。
+ *
+ * @param  Request  $request
+ * @return Response
+ */
+public function store(Request $request)
+{
+    $this->validate($request, [
+        'name' => 'required|max:255',
+    ]);
+
+    $request->user()->tasks()->create([
+        'name' => $request->name,
+    ]);
+
+    return redirect('/tasks');
+}
+ /**
+ * 移除給定的任務。
+ *
+ * @param  Request  $request
+ * @param  Task  $task
+ * @return Response
+ */
+public function destroy(Request $request, Task $task)
+{
+   $this->authorize('destroy', $task);
+   
+   $task->delete();
+   
+       return redirect('/tasks');
+    }
+
+
 }
