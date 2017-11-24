@@ -13,7 +13,9 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'App\Model' => 'App\Policies\ModelPolicy',
+        'App\Model' => 'App\Policies\ModelPolicy',   
+         Task::class => TaskPolicy::class,
+        
     ];
 
     /**
@@ -27,13 +29,5 @@ class AuthServiceProvider extends ServiceProvider
 
         //
     }
-    /**
- * 應用程式的原則對應。
- *
- * @var array
- */
-protected $policies = [
-    Task::class => TaskPolicy::class,
-];
-
+    
 }
