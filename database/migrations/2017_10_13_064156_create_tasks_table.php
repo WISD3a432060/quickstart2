@@ -28,32 +28,5 @@ class CreateTasksTable extends Migration
     {
         Schema::drop('tasks');
     }
-    $user = App\User::find(1);
-
-foreach ($user->tasks as $task) {
-    echo $task->name;
-}
 
 }
-<?php
-namespace App;
-use App\User;
-use Illuminate\Database\Eloquent\Model;
-class Task extends Model
-{
-    /**
-     * 這些屬性能被批量賦值。
-     *
-     * @var array
-     */
-    protected $fillable = ['name'];
-
-    /**
-     * 取得擁有此任務的使用者。
-     */
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
-}
-
